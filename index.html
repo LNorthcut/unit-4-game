@@ -23,12 +23,12 @@
                 </div>
         </div>
         <h1 class="main">Can you guess me: <span class="number-to-guess"></span> </h1>
-    <div>
-        <div id="crystals">
-            <img src="assets/images/replaceWithMe.jpg">;
-            <img src="assets/images/replaceWithMe.jpg">;
-            <img src="assets/images/replaceWithMe.jpg">;
-            <img src="assets/images/replaceWithMe.jpg">;
+    <div class="css">
+        <div class="crystal">
+            <img src="assets/images/replaceWithMe.jpg"alt="imageCryatal">;
+            <img src="assets/images/replaceWithMe.jpg"alt="imageCryatal">;
+            <img src="assets/images/replaceWithMe.jpg"alt="imageCryatal">;
+            <img src="assets/images/replaceWithMe.jpg"alt="imageCryatal">;
         </div>
     </div>
 
@@ -58,26 +58,56 @@
         
         $(".number-to-guess").text(targetNumber);
 
+         var crystal = $("#crystal");
+
+         var counter = 0;
+
          var numberArray = [10, 30, 60, 2];
 
          for (var i = 0; i < numuberArray.length; i++) {
-             
-             var imageCryatal = $("<img>");
 
-             imageCryatal.addClass("crystal-image");
+             var imageCrystal =$("<img>");
 
-             imageCryatal.attr("src", "http://www.laboratoriosoluna.com/wp-content/uploads/2018/05/Amatista.jpg");
+             imageCrystal.addClass("crystal-image");
 
-             imageCryatal.attr("data-crystalvalue", numberArray[i]);
+            
 
-             crystals.append(imageCryatal);
+             imageCrystal.attr("data-crystalvalue", numberArray[i]);
 
+             crystal.append(imageCrystal);
+            
+
+            
          }
 
+
+
+         crystal.on("click", ".crystal-image", function() {
+            var crystalValue = ($(this).attr("data-crystalvalue"));
+            
+            crystalValue = parseInt(crystalValue);
+
+            counter += crystalValue;
+
+            alert("New score: " + counter);
+
+            if (counter === targetNumber) {
+               
+                alert("Okay okay okay I see you doing your thing!");
+             }
+
+             else if (counter >=targetNumber) {
+                 alert("It's okay try again!");
+             }
+         });
+
         
+
+    
 
       
     </script>
     
+    <!--attempted to make my clicks work on my images however I am not exactly sure on what I am doing wrong-->
 </body>
 </html>
